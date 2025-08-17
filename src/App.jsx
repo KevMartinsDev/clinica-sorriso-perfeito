@@ -1,58 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
+import Layout from './components/common/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Appointment from './pages/Appointment';
+import Gallery from './pages/Gallery';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Router>
-        <div className="app">
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </main>
-        </div>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/servicos" element={<Services />} />
+            <Route path="/agendamento" element={<Appointment />} />
+            <Route path="/galeria" element={<Gallery />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contato" element={<Contact />} />
+          </Routes>
+        </Layout>
       </Router>
     </>
-  );
-}
-
-function Home() {
-  return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      minHeight: '100vh',
-      fontFamily: 'Roboto, sans-serif',
-      backgroundColor: '#f8f9fa'
-    }}>
-      <h1 style={{ 
-        color: '#2E8B57', 
-        marginBottom: '1rem',
-        fontSize: '3rem'
-      }}>
-        Clínica Sorriso Perfeito
-      </h1>
-      <p style={{ 
-        color: '#666', 
-        fontSize: '1.2rem',
-        textAlign: 'center'
-      }}>
-        Seu sorriso é nossa especialidade
-      </p>
-      <div style={{
-        marginTop: '2rem',
-        padding: '1rem',
-        backgroundColor: '#87CEEB',
-        borderRadius: '8px',
-        color: 'white'
-      }}>
-        Projeto React configurado com sucesso! 🦷
-      </div>
-    </div>
   );
 }
 
