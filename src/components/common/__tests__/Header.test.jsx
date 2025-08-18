@@ -46,7 +46,7 @@ describe('Header', () => {
       link.getAttribute('href')?.includes('wa.me')
     );
     expect(whatsappLinks.length).toBeGreaterThanOrEqual(1);
-    expect(whatsappLinks[0]).toHaveAttribute('href', 'https://wa.me/5511987654321');
+    expect(whatsappLinks[0]).toHaveAttribute('href', 'https://wa.me/555591679300');
   });
 
   it('apenas botão WhatsApp presente no header', () => {

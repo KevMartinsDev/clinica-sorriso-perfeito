@@ -189,8 +189,8 @@ const Footer = () => {
           </ContactItem>
           <ContactItem>
             <FaPhone />
-            <ContactLink href="tel:+5500000000000">
-              (00) 0000-0000
+            <ContactLink href="tel:+555591679300">
+              (55) 5 9167-9300
             </ContactLink>
           </ContactItem>
           <ContactItem>

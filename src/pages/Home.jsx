@@ -1,25 +1,18 @@
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 2rem;
-`;
-
-const Title = styled.h1`
-  font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  text-align: center;
-`;
+import Hero from '../components/home/Hero';
+import ServicesPreview from '../components/home/ServicesPreview';
+import Testimonials from '../components/home/Testimonials';
+import ContactInfo from '../components/home/ContactInfo';
+import WhatsAppFloat from '../components/common/WhatsAppFloat';
 
 const Home = () => {
   return (
-    <Container>
-      <Title>Página Inicial - Clínica Sorriso Perfeito</Title>
-    </Container>
+    <>
+      <Hero />
+      <ServicesPreview />
+      <Testimonials />
+      <ContactInfo />
+      <WhatsAppFloat />
+    </>
   );
 };
 

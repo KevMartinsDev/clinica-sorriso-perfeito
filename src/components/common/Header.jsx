@@ -239,7 +239,7 @@ const Header = () => {
         </Nav>
 
         <ContactInfo>
-          <WhatsAppButton href="https://wa.me/5511987654321" target="_blank">
+          <WhatsAppButton href="https://wa.me/555591679300" target="_blank">
             <FaWhatsapp />
             WhatsApp
           </WhatsAppButton>
@@ -261,7 +261,7 @@ const Header = () => {
             {item.label}
           </MobileNavLink>
         ))}
-        <MobileWhatsApp href="https://wa.me/5511987654321" target="_blank">
+        <MobileWhatsApp href="https://wa.me/555591679300" target="_blank">
           <FaWhatsapp />
           WhatsApp Contato
         </MobileWhatsApp>

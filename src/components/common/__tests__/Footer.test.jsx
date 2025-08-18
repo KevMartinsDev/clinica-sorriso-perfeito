@@ -23,7 +23,7 @@ describe('Footer', () => {
     
     expect(screen.getByText(/Rua das Flores, 123/)).toBeInTheDocument();
     expect(screen.getByText(/Vila Madalena, São Paulo/)).toBeInTheDocument();
-    expect(screen.getByText('(00) 0000-0000')).toBeInTheDocument();
+    expect(screen.getByText('(55) 5 9167-9300')).toBeInTheDocument();
     expect(screen.getByText('contato@sorrisoperfeito.com.br')).toBeInTheDocument();
   });
 
@@ -81,8 +81,8 @@ describe('Footer', () => {
   it('links de contato têm atributos corretos', () => {
     renderWithRouter(<Footer />);
     
-    const phoneLink = screen.getByRole('link', { name: '(00) 0000-0000' });
-    expect(phoneLink).toHaveAttribute('href', 'tel:+5500000000000');
+    const phoneLink = screen.getByRole('link', { name: '(55) 5 9167-9300' });
+    expect(phoneLink).toHaveAttribute('href', 'tel:+555591679300');
     
     const emailLink = screen.getByRole('link', { name: 'contato@sorrisoperfeito.com.br' });
     expect(emailLink).toHaveAttribute('href', 'mailto:contato@sorrisoperfeito.com.br');
