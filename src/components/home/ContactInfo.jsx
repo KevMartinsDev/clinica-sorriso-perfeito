@@ -225,12 +225,12 @@ const ContactInfo = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
-    window.open(`https://wa.me/555591679300?text=${message}`, '_blank');
+    window.open(`https://wa.me/5599916793000?text=${message}`, '_blank');
   };
 
   const handleEmergencyClick = () => {
     const message = encodeURIComponent('Olá! Preciso de atendimento de emergência.');
-    window.open(`https://wa.me/555591679300?text=${message}`, '_blank');
+    window.open(`https://wa.me/5599916793000?text=${message}`, '_blank');
   };
 
   const handleDirectionsClick = () => {
@@ -300,12 +300,12 @@ const ContactInfo = () => {
               <ContactTitle>Telefone</ContactTitle>
               <ContactText>
                 Central de Atendimento<br />
-                (55) 5 9167-9300<br />
+                (55) 99 9167-9300<br />
                 Atendimento comercial
               </ContactText>
               <ContactAction 
                 $color="#4169E1"
-                href="tel:+555591679300"
+                href="tel:+5599916793000"
               >
                 <FaPhone />
                 Ligar agora
@@ -319,7 +319,7 @@ const ContactInfo = () => {
               <ContactTitle>WhatsApp</ContactTitle>
               <ContactText>
                 Agendamentos e dúvidas<br />
-                (55) 5 9167-9300<br />
+                (55) 99 9167-9300<br />
                 Resposta rápida
               </ContactText>
               <ContactAction 

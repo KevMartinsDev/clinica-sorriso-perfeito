@@ -27,7 +27,7 @@ describe('WhatsAppFloat Component', () => {
     fireEvent.click(button);
     
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://wa.me/555591679300?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta.',
+      'https://wa.me/5599916793000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta.',
       '_blank'
     );
   });
@@ -40,7 +40,7 @@ describe('WhatsAppFloat Component', () => {
     fireEvent.click(button);
     
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://wa.me/555591679300?text=Mensagem%20personalizada%20de%20teste',
+      'https://wa.me/5599916793000?text=Mensagem%20personalizada%20de%20teste',
       '_blank'
     );
   });

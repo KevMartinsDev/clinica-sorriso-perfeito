@@ -29,7 +29,7 @@ describe('Testimonials Component', () => {
     render(<Testimonials />);
     
     expect(screen.getByTestId('testimonial-text-1')).toHaveTextContent(
-      'Depois de anos com medo de dentista, a Dra. Marina me devolveu a confiança. Tratamento sem dor e resultado incrível!'
+      'Depois de anos com medo de dentista, a Dra. Maria me devolveu a confiança. Tratamento sem dor e resultado incrível!'
     );
     expect(screen.getByTestId('testimonial-text-2')).toHaveTextContent(
       'Meu filho adorou a consulta. Ambiente super acolhedor e profissionais que sabem lidar com crianças.'

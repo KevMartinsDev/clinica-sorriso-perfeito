@@ -3,7 +3,7 @@ export const testimonialsData = [
     id: 1,
     name: 'Maria Santos',
     age: 34,
-    text: 'Depois de anos com medo de dentista, a Dra. Marina me devolveu a confiança. Tratamento sem dor e resultado incrível!',
+    text: 'Depois de anos com medo de dentista, a Dra. Maria me devolveu a confiança. Tratamento sem dor e resultado incrível!',
     rating: 5,
     image: '/images/testimonials/maria-santos.jpg'
   },
