@@ -99,7 +99,7 @@ const CTAContainer = styled(motion.div)`
 `;
 
 const HeroImage = styled(motion.div)`
-  background: url('/images/hero-dentist.jpg') center/cover;
+  background: url('https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop') center/cover;
   min-height: 500px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);

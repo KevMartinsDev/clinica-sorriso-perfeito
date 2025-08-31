@@ -7,9 +7,11 @@ const Input = ({
   placeholder, 
   value, 
   onChange, 
+  onBlur,
   error, 
   required = false,
   mask,
+  name,
   ...props 
 }) => {
   const id = useId();
@@ -39,8 +41,9 @@ const Input = ({
     onChange(inputValue);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     setTouched(true);
+    if (onBlur) onBlur(e);
   };
 
   return (
@@ -53,16 +56,17 @@ const Input = ({
       )}
       <input
         id={id}
+        name={name}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={`input ${error && touched ? 'input-error' : ''}`}
+        className={`input ${error ? 'input-error' : ''}`}
         required={required}
         {...props}
       />
-      {error && touched && (
+      {error && (
         <span className="error-message">{error}</span>
       )}
     </div>
@@ -75,9 +79,11 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
   error: PropTypes.string,
   required: PropTypes.bool,
-  mask: PropTypes.string
+  mask: PropTypes.string,
+  name: PropTypes.string
 };
 
 export default Input;

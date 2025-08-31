@@ -64,6 +64,61 @@ export const useForm = (initialValues = {}, validationRules = {}) => {
     validateField(name, values[name]);
   }, [setFieldTouched, validateField, values]);
 
+  const scrollToFirstError = useCallback((errors) => {
+    const firstErrorField = Object.keys(errors)[0];
+    if (firstErrorField) {
+      const errorElement = document.querySelector(`[name="${firstErrorField}"], [data-field="${firstErrorField}"]`);
+      if (errorElement) {
+        errorElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+        errorElement.focus();
+      }
+    }
+  }, []);
+
+  const showErrorMessage = useCallback((message) => {
+    const existingAlert = document.querySelector('.form-error-alert');
+    if (existingAlert) existingAlert.remove();
+    
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'form-error-alert';
+    alertDiv.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(231, 76, 60, 0.3);
+      z-index: 10000;
+      font-weight: 600;
+      max-width: 400px;
+      animation: slideInAlert 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      font-family: inherit;
+    `;
+    
+    alertDiv.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div style="font-size: 1.25rem;">⚠️</div>
+        <div>${message}</div>
+      </div>
+    `;
+    
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => {
+      if (alertDiv.parentNode) {
+        alertDiv.style.animation = 'slideInAlert 0.3s reverse';
+        setTimeout(() => alertDiv.remove(), 300);
+      }
+    }, 4000);
+  }, []);
+
   const handleSubmit = useCallback((onSubmit) => async (e) => {
     if (e) e.preventDefault();
     
@@ -84,8 +139,12 @@ export const useForm = (initialValues = {}, validationRules = {}) => {
       } finally {
         setIsSubmitting(false);
       }
+    } else {
+      scrollToFirstError(validation.errors);
+      const firstError = Object.values(validation.errors)[0];
+      showErrorMessage(`Erro no formulário: ${firstError}`);
     }
-  }, [values, validateAllFields]);
+  }, [values, validateAllFields, scrollToFirstError, showErrorMessage]);
 
   const resetForm = useCallback(() => {
     setValues(initialValues);

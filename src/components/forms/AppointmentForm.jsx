@@ -224,34 +224,38 @@ const AppointmentForm = () => {
           <SectionTitle>1. Dados Pessoais</SectionTitle>
           <FormGrid>
             <Input
+              name="name"
               label="Nome completo"
               value={values.name}
               onChange={handleChange('name')}
               onBlur={handleBlur('name')}
-              error={touched.name ? errors.name : ''}
+              error={errors.name}
               placeholder="Digite seu nome completo"
               required
             />
             <Input
+              name="email"
               label="Email"
               type="email"
               value={values.email}
               onChange={handleChange('email')}
               onBlur={handleBlur('email')}
-              error={touched.email ? errors.email : ''}
+              error={errors.email}
               placeholder="seu@email.com"
               required
             />
             <Input
+              name="phone"
               label="Telefone/WhatsApp"
               value={values.phone}
               onChange={handlePhoneChange}
               onBlur={handleBlur('phone')}
-              error={touched.phone ? errors.phone : ''}
+              error={errors.phone}
               placeholder="(11) 99999-9999"
               required
             />
             <Input
+              name="birthDate"
               label="Data de nascimento"
               type="date"
               value={values.birthDate}
@@ -266,7 +270,8 @@ const AppointmentForm = () => {
           <ServiceSelector
             selectedService={values.service}
             onServiceChange={handleServiceChange}
-            error={touched.service ? errors.service : ''}
+            error={errors.service}
+            data-field="service"
           />
         </FormSection>
 
@@ -274,16 +279,20 @@ const AppointmentForm = () => {
           <SectionTitle>3. Data e Horário</SectionTitle>
           <FormGrid $columns="1fr">
             <DatePicker
+              name="date"
               value={values.date}
               onChange={handleChange('date')}
               onBlur={handleBlur('date')}
-              error={touched.date ? errors.date : ''}
+              error={errors.date}
+              data-field="date"
             />
             <TimeSlots
+              name="time"
               selectedDate={values.date}
               selectedTime={values.time}
               onTimeSelect={handleChange('time')}
-              error={touched.time ? errors.time : ''}
+              error={errors.time}
+              data-field="time"
             />
           </FormGrid>
         </FormSection>

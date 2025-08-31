@@ -1,8 +1,11 @@
+import Layout from '../components/common/Layout';
 import TeamSection from '../components/about/TeamSection';
+import { FaBullseye, FaEye, FaGem } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <div className="about-page">
+    <Layout>
+      <div className="about-page">
       <div className="hero-section hero-about">
         <div className="container">
           <div className="hero-content">
@@ -39,7 +42,9 @@ const About = () => {
         <div className="container">
           <div className="mission-vision-grid">
             <div className="mission-card">
-              <div className="card-icon">🎯</div>
+              <div className="card-icon">
+                <FaBullseye />
+              </div>
               <h3>Nossa Missão</h3>
               <p>
                 Proporcionar tratamentos odontológicos de excelência, 
@@ -49,7 +54,9 @@ const About = () => {
             </div>
             
             <div className="vision-card">
-              <div className="card-icon">👁️</div>
+              <div className="card-icon">
+                <FaEye />
+              </div>
               <h3>Nossa Visão</h3>
               <p>
                 Ser referência em odontologia na Vila Madalena, 
@@ -59,7 +66,9 @@ const About = () => {
             </div>
             
             <div className="values-card">
-              <div className="card-icon">💎</div>
+              <div className="card-icon">
+                <FaGem />
+              </div>
               <h3>Nossos Valores</h3>
               <p>
                 Ética, transparência, excelência técnica, 
@@ -87,7 +96,8 @@ const About = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </Layout>
   );
 };
 

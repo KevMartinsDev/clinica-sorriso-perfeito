@@ -55,8 +55,13 @@ const SectionSubtitle = styled(motion.p)`
 
 const ContactGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -67,6 +72,22 @@ const ContactGrid = styled.div`
 const ContactCard = styled(Card)`
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 2rem 1.5rem;
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+`;
+
+const CardAction = styled.div`
+  margin-top: auto;
+  padding-top: 1rem;
 `;
 
 const ContactIcon = styled.div`
@@ -99,20 +120,24 @@ const ContactTitle = styled.h3`
 const ContactText = styled.p`
   color: var(--text-gray);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 `;
 
 const ContactAction = styled.a`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
   background: ${props => props.$color};
   color: white;
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  min-width: 140px;
+  text-align: center;
   
   &:hover {
     transform: translateY(-2px);
@@ -225,16 +250,16 @@ const ContactInfo = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
-    window.open(`https://wa.me/5599916793000?text=${message}`, '_blank');
+    window.open(`https://wa.me/555591679300?text=${message}`, '_blank');
   };
 
   const handleEmergencyClick = () => {
     const message = encodeURIComponent('Olá! Preciso de atendimento de emergência.');
-    window.open(`https://wa.me/5599916793000?text=${message}`, '_blank');
+    window.open(`https://wa.me/555591679300?text=${message}`, '_blank');
   };
 
   const handleDirectionsClick = () => {
-    window.open('https://maps.google.com/?q=Rua+das+Flores+123+São+Paulo', '_blank');
+    window.open('https://maps.google.com/?q=Av.+Brigadeiro+Faria+Lima+3477+Itaim+Bibi+São+Paulo', '_blank');
   };
 
   const schedule = [
@@ -274,77 +299,99 @@ const ContactInfo = () => {
         >
           <ContactGrid>
             <ContactCard variants={itemVariants} variant="elevated">
-              <ContactIcon $color="#2E8B57">
-                <FaMapMarkerAlt />
-              </ContactIcon>
-              <ContactTitle>Localização</ContactTitle>
-              <ContactText>
-                Rua das Flores, 123<br />
-                Vila Madalena, São Paulo - SP<br />
-                CEP: 05435-000
-              </ContactText>
-              <ContactAction 
-                $color="#2E8B57"
-                onClick={handleDirectionsClick}
-                href="#"
-              >
-                <FaRoute />
-                Como chegar
-              </ContactAction>
+              <CardContent>
+                <div>
+                  <ContactIcon $color="#2E8B57">
+                    <FaMapMarkerAlt />
+                  </ContactIcon>
+                  <ContactTitle>Localização</ContactTitle>
+                  <ContactText>
+                    Rua das Flores, 123<br />
+                    Vila Madalena, São Paulo - SP<br />
+                    CEP: 05435-000
+                  </ContactText>
+                </div>
+                <CardAction>
+                  <ContactAction 
+                    $color="#2E8B57"
+                    onClick={handleDirectionsClick}
+                    href="#"
+                  >
+                    <FaRoute />
+                    Como chegar
+                  </ContactAction>
+                </CardAction>
+              </CardContent>
             </ContactCard>
 
             <ContactCard variants={itemVariants} variant="elevated">
-              <ContactIcon $color="#4169E1">
-                <FaPhone />
-              </ContactIcon>
-              <ContactTitle>Telefone</ContactTitle>
-              <ContactText>
-                Central de Atendimento<br />
-                (55) 99 9167-9300<br />
-                Atendimento comercial
-              </ContactText>
-              <ContactAction 
-                $color="#4169E1"
-                href="tel:+5599916793000"
-              >
-                <FaPhone />
-                Ligar agora
-              </ContactAction>
+              <CardContent>
+                <div>
+                  <ContactIcon $color="#4169E1">
+                    <FaPhone />
+                  </ContactIcon>
+                  <ContactTitle>Telefone</ContactTitle>
+                  <ContactText>
+                    Central de Atendimento<br />
+                    (55) 99 9167-9300<br />
+                    Atendimento comercial
+                  </ContactText>
+                </div>
+                <CardAction>
+                  <ContactAction 
+                    $color="#4169E1"
+                    href="tel:+555591679300"
+                  >
+                    <FaPhone />
+                    Ligar agora
+                  </ContactAction>
+                </CardAction>
+              </CardContent>
             </ContactCard>
 
             <ContactCard variants={itemVariants} variant="elevated">
-              <ContactIcon $color="#25D366">
-                <FaWhatsapp />
-              </ContactIcon>
-              <ContactTitle>WhatsApp</ContactTitle>
-              <ContactText>
-                Agendamentos e dúvidas<br />
-                (55) 99 9167-9300<br />
-                Resposta rápida
-              </ContactText>
-              <ContactAction 
-                $color="#25D366"
-                onClick={handleWhatsAppClick}
-                href="#"
-              >
-                <FaWhatsapp />
-                Chamar no WhatsApp
-              </ContactAction>
+              <CardContent>
+                <div>
+                  <ContactIcon $color="#25D366">
+                    <FaWhatsapp />
+                  </ContactIcon>
+                  <ContactTitle>WhatsApp</ContactTitle>
+                  <ContactText>
+                    Agendamentos e dúvidas<br />
+                    (55) 99 9167-9300<br />
+                    Resposta rápida
+                  </ContactText>
+                </div>
+                <CardAction>
+                  <ContactAction 
+                    $color="#25D366"
+                    onClick={handleWhatsAppClick}
+                    href="#"
+                  >
+                    <FaWhatsapp />
+                    WhatsApp
+                  </ContactAction>
+                </CardAction>
+              </CardContent>
             </ContactCard>
 
             <ContactCard variants={itemVariants} variant="elevated">
-              <ContactIcon $color="#FF6B35">
-                <FaClock />
-              </ContactIcon>
-              <ContactTitle>Horários</ContactTitle>
-              <ScheduleList>
-                {schedule.map((item, index) => (
-                  <li key={index}>
-                    <DayLabel>{item.day}</DayLabel>
-                    <TimeLabel>{item.time}</TimeLabel>
-                  </li>
-                ))}
-              </ScheduleList>
+              <CardContent>
+                <div>
+                  <ContactIcon $color="#FF6B35">
+                    <FaClock />
+                  </ContactIcon>
+                  <ContactTitle>Horários</ContactTitle>
+                  <ScheduleList>
+                    {schedule.map((item, index) => (
+                      <li key={index}>
+                        <DayLabel>{item.day}</DayLabel>
+                        <TimeLabel>{item.time}</TimeLabel>
+                      </li>
+                    ))}
+                  </ScheduleList>
+                </div>
+              </CardContent>
             </ContactCard>
           </ContactGrid>
         </motion.div>

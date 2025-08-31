@@ -1,8 +1,11 @@
+import Layout from '../components/common/Layout';
 import ContactForm from '../components/forms/ContactForm';
+import { FaMapMarkerAlt, FaPhone, FaWhatsapp, FaMap, FaExclamationTriangle } from 'react-icons/fa';
 
 const Contact = () => {
   return (
-    <div className="contact-page">
+    <Layout>
+      <div className="contact-page">
       <div className="hero-section hero-contact">
         <div className="container">
           <div className="hero-content">
@@ -22,7 +25,9 @@ const Contact = () => {
                 <h2>Informações de Contato</h2>
                 
                 <div className="info-item">
-                  <div className="info-icon">📍</div>
+                  <div className="info-icon">
+                    <FaMapMarkerAlt />
+                  </div>
                   <div className="info-details">
                     <h3>Endereço</h3>
                     <p>
@@ -34,7 +39,9 @@ const Contact = () => {
                 </div>
 
                 <div className="info-item">
-                  <div className="info-icon">📞</div>
+                  <div className="info-icon">
+                    <FaPhone />
+                  </div>
                   <div className="info-details">
                     <h3>Telefone</h3>
                     <p>(55) 99 9167-9300</p>
@@ -42,33 +49,24 @@ const Contact = () => {
                 </div>
 
                 <div className="info-item">
-                  <div className="info-icon">📱</div>
+                  <div className="info-icon">
+                    <FaWhatsapp />
+                  </div>
                   <div className="info-details">
                     <h3>WhatsApp</h3>
                     <p>
                       <a 
-                        href="https://wa.me/5599916793000" 
+                        href="https://wa.me/555591679300" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="whatsapp-link"
                       >
-                        (55) 99 9167-9300
+                        (55) 55 9167-9300
                       </a>
                     </p>
                   </div>
                 </div>
 
-                <div className="info-item">
-                  <div className="info-icon">✉️</div>
-                  <div className="info-details">
-                    <h3>Email</h3>
-                    <p>
-                      <a href="mailto:contato@sorrisoperfeito.com.br">
-                        contato@sorrisoperfeito.com.br
-                      </a>
-                    </p>
-                  </div>
-                </div>
               </div>
 
               <div className="hours-section">
@@ -104,13 +102,15 @@ const Contact = () => {
           <h2 className="section-title">Nossa Localização</h2>
           <div className="map-container">
             <div className="map-placeholder">
-              <div className="map-icon">🗺️</div>
+              <div className="map-icon">
+                <FaMap />
+              </div>
               <p>
-                Rua das Flores, 123 - Vila Madalena<br />
-                São Paulo - SP, 05462-000
+                Av. Brigadeiro Faria Lima, 3477 - Itaim Bibi<br />
+                São Paulo - SP, 04538-133
               </p>
               <a 
-                href="https://maps.google.com/?q=Rua+das+Flores,+123+Vila+Madalena+São+Paulo" 
+                href="https://maps.google.com/?q=Av.+Brigadeiro+Faria+Lima,+3477+Itaim+Bibi+São+Paulo" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-primary"
@@ -125,7 +125,9 @@ const Contact = () => {
       <section className="emergency-contact">
         <div className="container">
           <div className="emergency-card">
-            <div className="emergency-icon">🚨</div>
+            <div className="emergency-icon">
+              <FaExclamationTriangle />
+            </div>
             <div className="emergency-content">
               <h3>Emergências Odontológicas</h3>
               <p>
@@ -133,7 +135,7 @@ const Contact = () => {
                 ou deixe uma mensagem no formulário informando que é uma emergência.
               </p>
               <a 
-                href="https://wa.me/5599916793000?text=EMERGÊNCIA - Preciso de atendimento urgente" 
+                href="https://wa.me/555591679300?text=EMERGÊNCIA - Preciso de atendimento urgente" 
                 className="btn btn-emergency"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -144,7 +146,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </Layout>
   );
 };
 

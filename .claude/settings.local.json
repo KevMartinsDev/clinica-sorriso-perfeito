@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run test:*)"
+      "Bash(npm run test:*)",
+      "Bash(npm install:*)",
+      "Bash(start http://localhost:3001/galeria)",
+      "Bash(curl:*)",
+      "Read(C:\\/**)",
+      "Bash(npm run dev:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

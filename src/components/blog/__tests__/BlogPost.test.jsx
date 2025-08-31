@@ -1,0 +1,183 @@
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import BlogPost from '../BlogPost';
+
+const renderWithProviders = (component, initialEntries = ['/blog/test-slug']) => {
+  return render(
+    <HelmetProvider>
+      <MemoryRouter initialEntries={initialEntries}>
+        {component}
+      </MemoryRouter>
+    </HelmetProvider>
+  );
+};
+
+vi.mock('../../data/blog-posts', () => ({
+  blogPosts: [
+    {
+      id: 1,
+      slug: 'test-slug',
+      title: 'Test Blog Post Title',
+      excerpt: 'Test excerpt for the blog post',
+      content: `
+Test content paragraph.
+
+## Test Heading 2
+
+Content under heading 2.
+
+### Test Heading 3
+
+Content under heading 3.
+
+**Important information** that should be highlighted.
+
+**Call to action at the end of the article**
+      `,
+      image: 'test-image.jpg',
+      publishDate: '2024-10-15',
+      readTime: '5 min',
+      tags: ['test', 'blog', 'example'],
+      author: 'Test Author',
+      seo: {
+        title: 'Test SEO Title',
+        description: 'Test SEO description',
+        keywords: 'test, blog, seo'
+      }
+    },
+    {
+      id: 2,
+      slug: 'related-post',
+      title: 'Related Post Title',
+      excerpt: 'Related post excerpt',
+      content: 'Related post content',
+      image: 'related-image.jpg',
+      publishDate: '2024-10-10',
+      readTime: '3 min',
+      tags: ['test', 'related'],
+      author: 'Related Author',
+      seo: {
+        title: 'Related SEO Title',
+        description: 'Related SEO description',
+        keywords: 'related, test'
+      }
+    }
+  ]
+}));
+
+describe('BlogPost Component', () => {
+  it('renders blog post title', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('Test Blog Post Title')).toBeInTheDocument();
+  });
+
+  it('displays post metadata', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('15 de outubro de 2024')).toBeInTheDocument();
+    expect(screen.getByText('5 min')).toBeInTheDocument();
+    expect(screen.getByText('Test Author')).toBeInTheDocument();
+  });
+
+  it('renders post image', () => {
+    renderWithProviders(<BlogPost />);
+    
+    const image = screen.getByAltText('Test Blog Post Title');
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', 'test-image.jpg');
+  });
+
+  it('renders formatted content with headings', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('Test Heading 2')).toBeInTheDocument();
+    expect(screen.getByText('Test Heading 3')).toBeInTheDocument();
+    expect(screen.getByText('Test content paragraph.')).toBeInTheDocument();
+  });
+
+  it('renders call-to-action section', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('Precisa de cuidados odontológicos?')).toBeInTheDocument();
+    expect(screen.getByText('Agendar Consulta')).toBeInTheDocument();
+  });
+
+  it('displays post tags', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('test')).toBeInTheDocument();
+    expect(screen.getByText('blog')).toBeInTheDocument();
+    expect(screen.getByText('example')).toBeInTheDocument();
+  });
+
+  it('shows back to blog link', () => {
+    renderWithProviders(<BlogPost />);
+    
+    const backLink = screen.getByText('Voltar para o blog');
+    expect(backLink).toBeInTheDocument();
+    expect(backLink.closest('a')).toHaveAttribute('href', '/blog');
+  });
+
+  it('displays related posts when available', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('Artigos relacionados')).toBeInTheDocument();
+    expect(screen.getByText('Related Post Title')).toBeInTheDocument();
+  });
+
+  it('redirects to blog list when post not found', () => {
+    renderWithProviders(<BlogPost />, ['/blog/non-existent-slug']);
+    
+    expect(window.location.pathname).toBe('/blog');
+  });
+
+  it('formats content paragraphs correctly', () => {
+    renderWithProviders(<BlogPost />);
+    
+    const content = screen.getByText('Test content paragraph.');
+    expect(content.tagName).toBe('P');
+  });
+
+  it('highlights important text', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText('Important information')).toBeInTheDocument();
+  });
+
+  it('shows CTA at the end of article', () => {
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.getByText(/Call to action at the end/)).toBeInTheDocument();
+  });
+
+  it('handles posts without related articles', () => {
+    vi.doMock('../../data/blog-posts', () => ({
+      blogPosts: [
+        {
+          id: 1,
+          slug: 'test-slug',
+          title: 'Test Blog Post Title',
+          excerpt: 'Test excerpt',
+          content: 'Test content',
+          image: 'test-image.jpg',
+          publishDate: '2024-10-15',
+          readTime: '5 min',
+          tags: ['unique-tag'],
+          author: 'Test Author',
+          seo: {
+            title: 'Test SEO Title',
+            description: 'Test SEO description',
+            keywords: 'test'
+          }
+        }
+      ]
+    }));
+
+    renderWithProviders(<BlogPost />);
+    
+    expect(screen.queryByText('Artigos relacionados')).not.toBeInTheDocument();
+  });
+});

@@ -72,6 +72,7 @@ const NavLink = styled(Link)`
 const ContactInfo = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 2rem;
 
   @media (max-width: 768px) {
     display: none;

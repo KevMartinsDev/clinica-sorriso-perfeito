@@ -20,12 +20,14 @@ const TeamSection = () => {
               </div>
               <div className="team-card-content">
                 <h3 className="team-member-name">{doctor.name}</h3>
-                <p className="team-member-cro">{doctor.cro}</p>
                 <p className="team-member-specialty">
                   <strong>Especialista em:</strong> {doctor.specialty}
                 </p>
                 <p className="team-member-education">
                   <strong>Formação:</strong> {doctor.education}
+                </p>
+                <p className="team-member-description">
+                  {doctor.description}
                 </p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { formatDateTime, formatMoney, capitalizeWords } from '../utils/formatters';
 
-const WHATSAPP_NUMBER = '5599916793000';
+const WHATSAPP_NUMBER = '555591679300';
 
 export const useWhatsApp = () => {
   const sendAppointment = useCallback((appointmentData) => {
@@ -26,20 +26,20 @@ export const useWhatsApp = () => {
     const insuranceText = insurance === 'none' ? 'Não possui' : insurance;
     const patientType = isReturningPatient ? 'Sim' : 'Não';
     
-    const message = `🦷 *AGENDAMENTO DE CONSULTA*
+    const message = `AGENDAMENTO DE CONSULTA
 
-👤 *Nome:* ${capitalizeWords(name)}
-📞 *Telefone:* ${phone}
-📧 *Email:* ${email}
-${birthDate ? `🎂 *Nascimento:* ${new Date(birthDate).toLocaleDateString('pt-BR')}\n` : ''}
-🏥 *Tipo:* ${service}
-📅 *Data:* ${formatDateTime(date, time)}
-👨‍⚕️ *Profissional:* ${professionalText}
-💰 *Valor:* ${formatMoney(servicePrice)}
-🏥 *Convênio:* ${insuranceText}
-👥 *Já é paciente:* ${patientType}
-${observations ? `📝 *Obs:* ${observations}\n` : ''}
-Aguardo confirmação! 😊`;
+Nome: ${capitalizeWords(name)}
+Telefone: ${phone}
+Email: ${email}
+${birthDate ? `Nascimento: ${new Date(birthDate).toLocaleDateString('pt-BR')}\n` : ''}
+Tipo: ${service}
+Data: ${formatDateTime(date, time)}
+Profissional: ${professionalText}
+Valor: ${formatMoney(servicePrice)}
+Convenio: ${insuranceText}
+Ja e paciente: ${patientType}
+${observations ? `Observacoes: ${observations}\n` : ''}
+Aguardo confirmacao!`;
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

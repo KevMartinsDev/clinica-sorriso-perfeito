@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaTooth, FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaTooth, FaMapMarkerAlt, FaPhone, FaClock, FaInstagram, FaFacebook } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   background: var(--primary-color);
@@ -168,10 +168,10 @@ const Footer = () => {
             Sua saúde bucal é nossa prioridade.
           </p>
           <SocialLinks>
-            <SocialLink href="https://instagram.com/sorrisoperfeito" target="_blank" rel="noopener noreferrer">
+            <SocialLink href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </SocialLink>
-            <SocialLink href="https://facebook.com/sorrisoperfeito" target="_blank" rel="noopener noreferrer">
+            <SocialLink href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <FaFacebook />
             </SocialLink>
           </SocialLinks>
@@ -182,21 +182,15 @@ const Footer = () => {
           <ContactItem>
             <FaMapMarkerAlt />
             <div>
-              Rua das Flores, 123<br />
-              Vila Madalena, São Paulo<br />
-              CEP: 05435-000
+              Av. Brigadeiro Faria Lima, 3477<br />
+              Itaim Bibi, São Paulo - SP<br />
+              CEP: 04538-133
             </div>
           </ContactItem>
           <ContactItem>
             <FaPhone />
             <ContactLink href="tel:+555591679300">
-              (55) 5 9167-9300
-            </ContactLink>
-          </ContactItem>
-          <ContactItem>
-            <FaEnvelope />
-            <ContactLink href="mailto:contato@sorrisoperfeito.com.br">
-              contato@sorrisoperfeito.com.br
+              (55) 55 9167-9300
             </ContactLink>
           </ContactItem>
         </FooterSection>

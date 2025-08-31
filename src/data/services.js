@@ -14,7 +14,7 @@ export const servicesData = [
     id: 2,
     title: 'Ortodontia',
     description: 'Alinhamento perfeito do seu sorriso',
-    price: 'A partir de R$ 100',
+    price: 'A partir de R$ 150',
     icon: FaSmile,
     color: '#4169E1',
     features: ['Aparelhos fixos', 'Aparelhos móveis', 'Invisalign']
@@ -23,7 +23,7 @@ export const servicesData = [
     id: 3,
     title: 'Estética Dental',
     description: 'Transforme seu sorriso com naturalidade',
-    price: 'A partir de R$ 450',
+    price: 'A partir de R$ 680',
     icon: FaStar,
     color: '#FF6B35',
     features: ['Clareamento', 'Facetas', 'Harmonização']
@@ -32,7 +32,7 @@ export const servicesData = [
     id: 4,
     title: 'Implantes',
     description: 'Recupere a função e estética dos dentes',
-    price: 'A partir de R$ 1.800',
+    price: 'A partir de R$ 200',
     icon: FaCog,
     color: '#8A2BE2',
     features: ['Implante unitário', 'Prótese total', 'Carga imediata']

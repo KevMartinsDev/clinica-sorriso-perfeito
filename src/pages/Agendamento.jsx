@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaClock, FaUserMd, FaWhatsapp } from 'react-icons/fa';
+import Layout from '../components/common/Layout';
 import AppointmentForm from '../components/forms/AppointmentForm';
 
 const AgendamentoPage = styled.div`
@@ -166,7 +167,8 @@ const InfoList = styled.ul`
 
 const Agendamento = () => {
   return (
-    <AgendamentoPage>
+    <Layout>
+      <AgendamentoPage>
       <HeroSection>
         <Container>
           <HeroTitle
@@ -255,7 +257,8 @@ const Agendamento = () => {
           <AppointmentForm />
         </Container>
       </FormSection>
-    </AgendamentoPage>
+      </AgendamentoPage>
+    </Layout>
   );
 };
 

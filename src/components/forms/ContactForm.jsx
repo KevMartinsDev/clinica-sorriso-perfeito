@@ -120,7 +120,7 @@ const ContactForm = () => {
       });
 
       const whatsappMessage = `Olá! Recebi seu contato através do site.\n\n*Nome:* ${formData.name}\n*Email:* ${formData.email}\n*Telefone:* ${formData.phone}\n*Assunto:* ${subjectOptions.find(opt => opt.value === formData.subject)?.label}\n*Mensagem:* ${formData.message}`;
-      const whatsappUrl = `https://wa.me/5599916793000?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/555591679300?text=${encodeURIComponent(whatsappMessage)}`;
       
       setTimeout(() => {
         window.open(whatsappUrl, '_blank');
