@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { GlobalStyles } from './styles/GlobalStyles';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -20,7 +20,7 @@ function App() {
     <ErrorBoundary>
       <HelmetProvider>
         <GlobalStyles />
-        <Router>
+        <Router basename="/clinica-sorriso-perfeito">
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
