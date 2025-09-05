@@ -1,0 +1,60 @@
+User-agent: *
+Allow: /
+
+# Permitir acesso a todos os conteúdos importantes
+Allow: /sobre
+Allow: /servicos
+Allow: /agendamento
+Allow: /galeria
+Allow: /blog
+Allow: /contato
+
+# Bloquear arquivos técnicos desnecessários
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /test/
+Disallow: /__tests__/
+
+# Permitir recursos importantes para SEO
+Allow: /manifest.json
+Allow: /sw.js
+Allow: /icons/
+Allow: /images/
+Allow: /screenshots/
+
+# Sitemap
+Sitemap: https://clinica-sorriso-perfeito.com.br/sitemap.xml
+
+# Crawl-delay para ser respeitoso com os recursos do servidor
+Crawl-delay: 1
+
+# Instruções específicas para bots principais
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
