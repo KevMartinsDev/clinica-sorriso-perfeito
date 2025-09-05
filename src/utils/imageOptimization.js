@@ -6,7 +6,7 @@
  * @param {number} maxHeight - Altura máxima da thumbnail
  * @returns {Promise<string>} - Data URL da imagem comprimida
  */
-export const createThumbnail = (imageSrc, quality = 0.6, maxWidth = 400, maxHeight = 300) => {
+export const createThumbnail = (imageSrc, quality = 0.85, maxWidth = 500, maxHeight = 400) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -33,10 +33,14 @@ export const createThumbnail = (imageSrc, quality = 0.6, maxWidth = 400, maxHeig
       canvas.width = width;
       canvas.height = height;
       
-      // Draw and compress
+      // Enable image smoothing for better quality
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      
+      // Draw and compress with better quality
       ctx.drawImage(img, 0, 0, width, height);
       
-      // Convert to lower quality JPEG
+      // Convert to higher quality JPEG
       const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
       resolve(compressedDataUrl);
     };

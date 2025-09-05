@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaImage } from 'react-icons/fa';
 import { createThumbnail, createBlurPlaceholder } from '../../utils/imageOptimization';
 
 const ImageContainer = styled.div`
@@ -20,12 +21,12 @@ const Image = styled(motion.img)`
   transition: all 0.3s ease;
   image-rendering: optimizeQuality;
   
-  /* Reduce image quality for gallery thumbnails */
-  filter: contrast(1.05) saturate(1.1);
+  /* Enhance image quality for gallery thumbnails */
+  filter: contrast(1.08) saturate(1.15) brightness(1.02);
 
   &:hover {
     transform: scale(1.05);
-    filter: contrast(1.1) saturate(1.15);
+    filter: contrast(1.12) saturate(1.2) brightness(1.03);
   }
 `;
 
@@ -98,8 +99,8 @@ const LazyImage = ({ src, alt, onClick, index }) => {
     // Create optimized thumbnail and blur placeholder
     const createOptimizedVersions = async () => {
       try {
-        // Create compressed thumbnail (60% quality, max 400x300)
-        const thumbnail = await createThumbnail(src, 0.6, 400, 300);
+        // Create high-quality thumbnail (85% quality, max 500x400)
+        const thumbnail = await createThumbnail(src, 0.85, 500, 400);
         setThumbnailSrc(thumbnail);
         
         // Create blur placeholder for loading state
@@ -168,13 +169,13 @@ const LazyImage = ({ src, alt, onClick, index }) => {
       <ImageContainer onClick={handleClick}>
         {!loaded && !error && (
           <Placeholder>
-            📸
+            <FaImage />
           </Placeholder>
         )}
         
         {error && (
           <ErrorPlaceholder>
-            ❌
+            <FaImage style={{ opacity: 0.3 }} />
             <div style={{ marginTop: '0.5rem' }}>
               Erro ao carregar imagem
             </div>

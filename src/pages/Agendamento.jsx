@@ -7,7 +7,7 @@ import AppointmentForm from '../components/forms/AppointmentForm';
 
 const AgendamentoPage = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 `;
 
 const HeroSection = styled.section`

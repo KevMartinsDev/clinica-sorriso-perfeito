@@ -29,7 +29,7 @@ Evite abrir embalagens, quebrar nozes ou morder objetos duros com os dentes. Iss
 
 **Precisa de uma avaliação profissional? Agende sua consulta conosco!**
     `,
-    image: 'https://images.pexels.com/photos/3845457/pexels-photo-3845457.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    image: 'https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
     publishDate: '2024-10-15',
     readTime: '3 min',
     tags: ['saúde bucal', 'prevenção', 'cuidados diários'],
@@ -137,7 +137,7 @@ Combinação para melhor resultado e manutenção.
 
 **Quer um sorriso mais branco e saudável? Consulte nossos especialistas!**
     `,
-    image: 'https://images.pexels.com/photos/3845456/pexels-photo-3845456.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    image: 'https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
     publishDate: '2024-10-05',
     readTime: '4 min',
     tags: ['clareamento', 'estética', 'mitos'],
@@ -300,6 +300,136 @@ A relação entre alimentação e saúde bucal é mais estreita do que muitas pe
       title: 'Alimentação e Saúde Bucal: Guia Completo | Clínica Sorriso Perfeito',
       description: 'Descubra como a alimentação influencia a saúde bucal. Alimentos que fazem bem e mal aos dentes. Dicas de profissionais.',
       keywords: 'alimentação saúde bucal, comida dentes, nutrição dental, cáries prevenção'
+    }
+  },
+  {
+    id: 6,
+    slug: 'implante-dentario-guia-completo',
+    title: 'Implante dentário: tudo o que você precisa saber',
+    excerpt: 'Guia completo sobre implantes dentários, desde o procedimento até os cuidados pós-operatórios.',
+    content: `
+A perda de dentes pode afetar significativamente a qualidade de vida, influenciando a mastigação, fala e autoestima. O implante dentário surge como a solução mais moderna e eficaz para substituir dentes perdidos.
+
+## O que é um implante dentário
+
+O implante dentário é um pino de titânio que é inserido no osso maxilar ou mandibular, funcionando como a raiz de um dente natural. Sobre este pino, é fixada uma prótese (coroa) que substitui o dente perdido.
+
+### Por que o titânio?
+- Biocompatível: não causa rejeição
+- Osseointegração: se funde ao osso naturalmente
+- Resistente e durável
+- Não sofre corrosão
+
+## Vantagens dos implantes
+
+### Funcionais
+- Mastigação eficiente como dente natural
+- Preservação dos dentes adjacentes
+- Manutenção da estrutura óssea
+- Fala clara e natural
+
+### Estéticas
+- Aparência completamente natural
+- Não se move ou solta durante a fala
+- Sorriso harmônico e confiante
+
+### Psicológicas
+- Maior autoestima e confiança
+- Liberdade para sorrir sem constrangimento
+- Melhora na qualidade de vida
+
+## Quem pode fazer implantes
+
+### Candidatos ideais
+- Adultos com crescimento ósseo completo
+- Boa saúde geral e bucal
+- Osso suficiente para suportar o implante
+- Gengivas saudáveis
+
+### Contraindicações
+- Diabetes descontrolado
+- Tabagismo excessivo (relativo)
+- Problemas de coagulação
+- Radioterapia recente na região
+
+## O procedimento passo a passo
+
+### 1. Avaliação e planejamento
+- Exame clínico detalhado
+- Radiografias e tomografia computadorizada
+- Planejamento digital do caso
+
+### 2. Cirurgia de colocação
+- Anestesia local
+- Inserção do implante no osso
+- Sutura da região
+
+### 3. Período de osseointegração
+- 3 a 6 meses de cicatrização
+- Acompanhamento periódico
+- Prótese provisória se necessário
+
+### 4. Colocação da prótese definitiva
+- Moldagem da região
+- Confecção da coroa
+- Fixação da prótese final
+
+## Cuidados pós-operatórios
+
+### Primeiros dias
+- Compressas de gelo nas primeiras 24 horas
+- Medicação conforme prescrição
+- Alimentação líquida/pastosa
+- Repouso relativo
+
+### Higienização
+- Escovação suave após 24 horas
+- Enxaguante bucal prescrito pelo dentista
+- Evitar bochechos vigorosos
+
+### A longo prazo
+- Higiene rigorosa como dente natural
+- Uso de fio dental adequado
+- Consultas regulares de manutenção
+- Evitar hábitos prejudiciais
+
+## Durabilidade e success rate
+
+### Taxa de sucesso
+- Mais de 95% de sucesso a longo prazo
+- Tecnologia comprovada há décadas
+- Melhoria constante das técnicas
+
+### Durabilidade
+- Podem durar toda a vida com cuidados adequados
+- Prótese pode necessitar substituição após 10-15 anos
+- Implante raramente precisa ser trocado
+
+## Tipos de implantes
+
+### Implante unitário
+- Substitui um dente individual
+- Mais comum e simples
+
+### Prótese sobre implantes
+- Substitui múltiplos dentes
+- Protocolo fixo ou removível
+
+### All-on-4 ou All-on-6
+- Reabilitação total da arcada
+- Apenas 4 ou 6 implantes por arcada
+
+**Quer saber se você é candidato a implante dentário? Agende uma avaliação gratuita!**
+    `,
+    image: 'https://images.pexels.com/photos/3779706/pexels-photo-3779706.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    publishDate: '2024-11-28',
+    readTime: '6 min',
+    tags: ['implante dentário', 'reabilitação oral', 'prótese'],
+    author: 'Dr. Roberto Oliveira',
+    seo: {
+      title: 'Implante Dentário: Guia Completo 2024 | Clínica Sorriso Perfeito',
+      description: 'Tudo sobre implante dentário: procedimento, vantagens, cuidados e durabilidade. Guia completo com informações de especialistas.',
+      keywords: 'implante dentário, reabilitação oral, prótese dentária, osseointegração'
     }
   }
 ];

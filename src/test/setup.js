@@ -1,5 +1,11 @@
 import '@testing-library/jest-dom'
-import { vi } from 'vitest'
+import { vi, afterEach } from 'vitest'
+import { cleanup } from '@testing-library/react'
+
+// Cleanup after each test
+afterEach(() => {
+  cleanup()
+})
 
 // CRITICAL: Patch window.matchMedia IMMEDIATELY before any other code runs
 // This must be the first thing that happens to catch framer-motion's initialization
@@ -120,19 +126,7 @@ Object.defineProperty(window, 'CSS', {
 // Disable animations for more stable tests
 process.env.DISABLE_MOTION = 'true';
 
-// Intercept and handle framer-motion errors globally
-const originalError = global.Error;
-global.Error = function(message) {
-  if (typeof message === 'string' && message.includes('addListener')) {
-    // Return a no-op error that doesn't get thrown
-    return { 
-      name: 'SuppressedFramerMotionError',
-      message: message,
-      stack: 'Suppressed framer-motion error in tests'
-    };
-  }
-  return new originalError(message);
-};
+// Removed problematic global.Error override that was breaking tests
 
 // Override the global error handler to catch and suppress framer-motion errors
 const originalOnerror = window.onerror;

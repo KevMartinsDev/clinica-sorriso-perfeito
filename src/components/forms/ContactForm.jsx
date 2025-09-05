@@ -28,43 +28,55 @@ const ContactForm = () => {
 
     switch (name) {
       case 'name':
-        if (!value.trim()) {
+        if (!value || !value.trim()) {
           error = 'Nome é obrigatório';
         } else if (value.trim().length < 2) {
           error = 'Nome deve ter pelo menos 2 caracteres';
+        } else if (value.trim().length > 50) {
+          error = 'Nome deve ter no máximo 50 caracteres';
+        } else if (!/^[a-zA-ZÀ-ſ\s]+$/.test(value.trim())) {
+          error = 'Nome deve conter apenas letras e espaços';
         }
         break;
 
       case 'email':
-        if (!value.trim()) {
+        if (!value || !value.trim()) {
           error = 'Email é obrigatório';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          error = 'Email inválido';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value.trim())) {
+          error = 'Por favor, insira um email válido';
+        } else if (value.length > 100) {
+          error = 'Email deve ter no máximo 100 caracteres';
         }
         break;
 
       case 'phone':
-        if (!value.trim()) {
+        if (!value || !value.trim()) {
           error = 'Telefone é obrigatório';
         } else {
           const cleaned = value.replace(/\D/g, '');
           if (cleaned.length < 10) {
             error = 'Telefone deve ter pelo menos 10 dígitos';
+          } else if (cleaned.length > 11) {
+            error = 'Telefone deve ter no máximo 11 dígitos';
+          } else if (cleaned.length === 10 && !['11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '24', '27', '28', '31', '32', '33', '34', '35', '37', '38', '41', '42', '43', '44', '45', '46', '47', '48', '49', '51', '53', '54', '55', '61', '62', '63', '64', '65', '66', '67', '68', '69', '71', '73', '74', '75', '77', '79', '81', '87', '82', '83', '84', '85', '86', '88', '89', '91', '93', '94', '95', '96', '97', '98', '99'].includes(cleaned.substring(0, 2))) {
+            error = 'Código de área inválido';
           }
         }
         break;
 
       case 'subject':
-        if (!value) {
+        if (!value || value === '') {
           error = 'Assunto é obrigatório';
         }
         break;
 
       case 'message':
-        if (!value.trim()) {
+        if (!value || !value.trim()) {
           error = 'Mensagem é obrigatória';
         } else if (value.trim().length < 10) {
           error = 'Mensagem deve ter pelo menos 10 caracteres';
+        } else if (value.trim().length > 1000) {
+          error = 'Mensagem deve ter no máximo 1000 caracteres';
         }
         break;
     }
@@ -73,12 +85,19 @@ const ContactForm = () => {
   };
 
   const handleInputChange = (name, value) => {
+    // Limpar espaços extras apenas para nome
+    let processedValue = value;
+    if (name === 'name') {
+      processedValue = value.replace(/\s+/g, ' '); // Substitui múltiplos espaços por um único
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: processedValue
     }));
 
-    const error = validateField(name, value);
+    // Validar em tempo real apenas se o campo já foi tocado
+    const error = validateField(name, processedValue);
     setErrors(prev => ({
       ...prev,
       [name]: error
@@ -159,6 +178,7 @@ const ContactForm = () => {
             value={formData.name}
             onChange={(value) => handleInputChange('name', value)}
             error={errors.name}
+            maxLength={50}
             required
           />
         </div>
@@ -171,6 +191,7 @@ const ContactForm = () => {
             value={formData.email}
             onChange={(value) => handleInputChange('email', value)}
             error={errors.email}
+            maxLength={100}
             required
           />
           
@@ -200,11 +221,12 @@ const ContactForm = () => {
         <div className="form-row">
           <Textarea
             label="Mensagem"
-            placeholder="Digite sua mensagem..."
+            placeholder="Digite sua mensagem... (mínimo 10 caracteres)"
             value={formData.message}
             onChange={(value) => handleInputChange('message', value)}
             error={errors.message}
             rows={5}
+            maxLength={1000}
             required
           />
         </div>

@@ -12,6 +12,7 @@ const Input = ({
   required = false,
   mask,
   name,
+  maxLength,
   ...props 
 }) => {
   const id = useId();
@@ -21,10 +22,12 @@ const Input = ({
     if (!maskType) return value;
     
     if (maskType === 'phone') {
-      const cleaned = value.replace(/\D/g, '');
+      const cleaned = value.replace(/\D/g, '').substring(0, 11); // Limita a 11 dígitos
       const match = cleaned.match(/^(\d{0,2})(\d{0,5})(\d{0,4})$/);
       if (match) {
-        return !match[2] ? match[1] : `(${match[1]}) ${match[2]}${match[3] ? `-${match[3]}` : ''}`;
+        if (!match[2]) return match[1];
+        if (!match[3]) return `(${match[1]}) ${match[2]}`;
+        return `(${match[1]}) ${match[2]}-${match[3]}`;
       }
     }
     
@@ -64,6 +67,8 @@ const Input = ({
         onBlur={handleBlur}
         className={`input ${error ? 'input-error' : ''}`}
         required={required}
+        maxLength={maxLength}
+        autoComplete="off"
         {...props}
       />
       {error && (
@@ -83,7 +88,8 @@ Input.propTypes = {
   error: PropTypes.string,
   required: PropTypes.bool,
   mask: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  maxLength: PropTypes.number
 };
 
 export default Input;

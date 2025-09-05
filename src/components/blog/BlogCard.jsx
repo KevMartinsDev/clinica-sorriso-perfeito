@@ -176,10 +176,6 @@ const BlogCard = ({ post, index }) => {
             <FaCalendarAlt />
             <span>{formatDate(post.publishDate)}</span>
           </MetaItem>
-          <MetaItem>
-            <FaClock />
-            <span>{post.readTime}</span>
-          </MetaItem>
         </Meta>
 
         <Title>{post.title}</Title>

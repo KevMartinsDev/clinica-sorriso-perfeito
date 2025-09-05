@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FaWhatsapp, FaSpinner } from 'react-icons/fa';
+import { memo, useCallback } from 'react';
 
 const ButtonBase = styled.button`
   display: inline-flex;
@@ -117,7 +118,7 @@ const LoadingSpinner = styled(FaSpinner)`
   }
 `;
 
-const Button = ({
+const Button = memo(({
   children,
   variant = 'primary',
   size = 'medium',
@@ -131,7 +132,7 @@ const Button = ({
   target,
   ...props
 }) => {
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
     if (loading || disabled) {
       e.preventDefault();
       return;
@@ -139,7 +140,7 @@ const Button = ({
     if (onClick) {
       onClick(e);
     }
-  };
+  }, [loading, disabled, onClick]);
 
   const buttonProps = {
     $variant: variant,
@@ -162,6 +163,6 @@ const Button = ({
       {children}
     </ButtonBase>
   );
-};
+});
 
 export default Button;

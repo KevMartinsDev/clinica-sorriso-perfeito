@@ -132,10 +132,10 @@ describe('SearchBar Component', () => {
 
     const input = screen.getByRole('textbox');
     
-    fireEvent.focus(input);
+    input.focus();
     expect(input).toHaveFocus();
 
-    fireEvent.blur(input);
+    input.blur();
     expect(input).not.toHaveFocus();
   });
 

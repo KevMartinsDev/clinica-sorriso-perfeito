@@ -9,6 +9,7 @@ const Textarea = ({
   error, 
   required = false,
   rows = 4,
+  maxLength,
   ...props 
 }) => {
   const id = useId();
@@ -32,12 +33,18 @@ const Textarea = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onBlur={handleBlur}
-        className={`textarea ${error && touched ? 'textarea-error' : ''}`}
+        className={`textarea ${error ? 'textarea-error' : ''}`}
         required={required}
         rows={rows}
+        maxLength={maxLength}
         {...props}
       />
-      {error && touched && (
+      {maxLength && (
+        <div className="character-count">
+          {value.length}/{maxLength}
+        </div>
+      )}
+      {error && (
         <span className="error-message">{error}</span>
       )}
     </div>
@@ -51,7 +58,8 @@ Textarea.propTypes = {
   onChange: PropTypes.func.isRequired,
   error: PropTypes.string,
   required: PropTypes.bool,
-  rows: PropTypes.number
+  rows: PropTypes.number,
+  maxLength: PropTypes.number
 };
 
 export default Textarea;

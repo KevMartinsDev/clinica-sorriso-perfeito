@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaClock, FaUser, FaArrowLeft, FaWhatsapp } from 'react-icons/fa';
 import { blogPosts } from '../../data/blog-posts';
 import Button from '../common/Button';
+import { useWhatsApp } from '../../hooks/useWhatsApp';
 
 const PostContainer = styled.div`
   max-width: 800px;
@@ -50,14 +51,17 @@ const PostImage = styled.img`
 `;
 
 const PostTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.75rem;
+  font-weight: 800;
   color: var(--text-dark);
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.25rem;
+    text-align: left;
   }
 `;
 
@@ -88,18 +92,22 @@ const PostContent = styled(motion.div)`
   line-height: 1.8;
   font-size: 1.125rem;
   color: var(--text-dark);
+  font-family: 'Inter', 'Roboto', sans-serif;
 
   p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin: 2.5rem 0 1rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin: 3rem 0 1.5rem;
     color: var(--text-dark);
     position: relative;
-    padding-left: 1rem;
+    padding-left: 1.25rem;
+    font-family: 'Inter', 'Roboto', sans-serif;
 
     &::before {
       content: '';
@@ -108,50 +116,68 @@ const PostContent = styled(motion.div)`
       top: 0;
       bottom: 0;
       width: 4px;
-      background: var(--primary-color);
+      background: linear-gradient(135deg, var(--primary-color), #45a049);
       border-radius: 2px;
     }
   }
 
   h3 {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin: 2rem 0 1rem;
+    margin: 2.5rem 0 1.25rem;
     color: var(--text-dark);
+    font-family: 'Inter', 'Roboto', sans-serif;
   }
 
   ul, ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
   }
 
   li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
   }
 
   strong {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary-color);
   }
 
   blockquote {
-    background: var(--primary-color-light);
-    border-left: 4px solid var(--primary-color);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 8px 8px 0;
+    background: linear-gradient(135deg, var(--primary-color-light), #f0f8f0);
+    border-left: 5px solid var(--primary-color);
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border-radius: 0 12px 12px 0;
     font-style: italic;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 10px rgba(46, 139, 87, 0.1);
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.0625rem;
+    padding: 0 0.5rem;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.625rem;
+      margin: 2.5rem 0 1.25rem;
+      padding-left: 1rem;
     }
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.375rem;
+      margin: 2rem 0 1rem;
+    }
+
+    blockquote {
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-size: 1.05rem;
     }
   }
 `;
@@ -257,6 +283,7 @@ const formatDate = (dateString) => {
 const BlogPost = () => {
   const { slug } = useParams();
   const post = blogPosts.find(p => p.slug === slug);
+  const { sendGeneralInquiry } = useWhatsApp();
 
   if (!post) {
     return <Navigate to="/blog" replace />;
@@ -318,10 +345,6 @@ const BlogPost = () => {
               <span>{formatDate(post.publishDate)}</span>
             </MetaItem>
             <MetaItem>
-              <FaClock />
-              <span>{post.readTime}</span>
-            </MetaItem>
-            <MetaItem>
               <FaUser />
               <span>{post.author}</span>
             </MetaItem>
@@ -341,7 +364,11 @@ const BlogPost = () => {
             Nossa equipe de especialistas está pronta para cuidar do seu sorriso. 
             Agende uma consulta e receba o melhor atendimento.
           </CTADescription>
-          <Button variant="primary" size="large" icon={FaWhatsapp}>
+          <Button 
+            variant="whatsapp" 
+            size="large" 
+            onClick={() => sendGeneralInquiry('Olá! Li o artigo sobre "' + post.title + '" e gostaria de agendar uma consulta.')}
+          >
             Agendar Consulta
           </Button>
         </CallToAction>
@@ -361,7 +388,7 @@ const BlogPost = () => {
                   <RelatedPost key={relatedPost.id} to={`/blog/${relatedPost.slug}`}>
                     <RelatedPostTitle>{relatedPost.title}</RelatedPostTitle>
                     <RelatedPostMeta>
-                      {formatDate(relatedPost.publishDate)} • {relatedPost.readTime}
+                      {formatDate(relatedPost.publishDate)}
                     </RelatedPostMeta>
                   </RelatedPost>
                 ))}
