@@ -16,8 +16,13 @@
 > 🚫 **Não representa uma empresa real**  
 > 🚫 **Não oferece serviços odontológicos**  
 > 🎯 **Criado apenas para demonstrar habilidades em desenvolvimento web**
-
 ---
+
+## 📱 **Acesso**
+
+- **Produção**: [[Link do deploy](https://kevmartinsdev.github.io/clinica-sorriso-perfeito/)]
+---
+
 
 ## 📝 **Sobre o Projeto**
 
@@ -296,12 +301,6 @@ npm run format
 | `lint` | Análise de código com ESLint |
 | `format` | Formatação com Prettier |
 
----
-
-## 📱 **Acesso**
-
-- **Desenvolvimento**: `http://localhost:5173`
-- **Produção**: [Link do deploy quando disponível]
 
 ---
 
