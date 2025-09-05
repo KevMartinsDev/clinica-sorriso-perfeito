@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Página inicial -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://clinica-sorriso-perfeito.com.br/images/hero-image.jpg</image:loc>
+      <image:title>Clínica Sorriso Perfeito - Odontologia de Excelência</image:title>
+      <image:caption>Clínica odontológica moderna especializada em tratamentos dentários</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Sobre -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/sobre</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://clinica-sorriso-perfeito.com.br/images/about-clinic.jpg</image:loc>
+      <image:title>Sobre a Clínica Sorriso Perfeito</image:title>
+      <image:caption>Conheça nossa história e nossa equipe especializada</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Serviços -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/servicos</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://clinica-sorriso-perfeito.com.br/images/services-overview.jpg</image:loc>
+      <image:title>Serviços Odontológicos</image:title>
+      <image:caption>Tratamentos dentários modernos e eficazes</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Agendamento -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/agendamento</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Galeria -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/galeria</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://clinica-sorriso-perfeito.com.br/images/gallery/before-after-1.jpg</image:loc>
+      <image:title>Antes e Depois - Transformação de Sorrisos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinica-sorriso-perfeito.com.br/images/gallery/before-after-2.jpg</image:loc>
+      <image:title>Resultados de Clareamento Dental</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Artigos do Blog -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/importancia-higiene-bucal</loc>
+    <lastmod>2024-12-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-30</news:publication_date>
+      <news:title>A Importância da Higiene Bucal para sua Saúde Geral</news:title>
+    </news:news>
+  </url>
+  
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/implantes-dentarios-guia-completo</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-29</news:publication_date>
+      <news:title>Implantes Dentários: Guia Completo para Sua Decisão</news:title>
+    </news:news>
+  </url>
+  
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/clareamento-dental-mitos-verdades</loc>
+    <lastmod>2024-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-28</news:publication_date>
+      <news:title>Clareamento Dental: Mitos e Verdades que Você Precisa Conhecer</news:title>
+    </news:news>
+  </url>
+  
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/ortodontia-adultos</loc>
+    <lastmod>2024-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-27</news:publication_date>
+      <news:title>Ortodontia em Adultos: Nunca é Tarde para um Sorriso Perfeito</news:title>
+    </news:news>
+  </url>
+  
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/prevencao-doencas-bucais</loc>
+    <lastmod>2024-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-26</news:publication_date>
+      <news:title>Prevenção de Doenças Bucais: Dicas Essenciais do Dentista</news:title>
+    </news:news>
+  </url>
+  
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/blog/alimentacao-saude-bucal</loc>
+    <lastmod>2024-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Blog Sorriso Perfeito</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2024-12-25</news:publication_date>
+      <news:title>Como a Alimentação Afeta sua Saúde Bucal</news:title>
+    </news:news>
+  </url>
+  
+  <!-- Contato -->
+  <url>
+    <loc>https://clinica-sorriso-perfeito.com.br/contato</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
