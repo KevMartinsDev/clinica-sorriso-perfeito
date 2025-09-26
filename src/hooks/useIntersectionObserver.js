@@ -7,7 +7,9 @@ export const useIntersectionObserver = (options = {}) => {
 
   useEffect(() => {
     const element = elementRef.current;
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -21,7 +23,7 @@ export const useIntersectionObserver = (options = {}) => {
       {
         threshold: 0.1,
         rootMargin: '50px',
-        ...options,
+        ...options
       }
     );
 

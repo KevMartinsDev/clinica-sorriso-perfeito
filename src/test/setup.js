@@ -1,54 +1,45 @@
-import '@testing-library/jest-dom'
-import { vi, afterEach } from 'vitest'
-import { cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom';
+import { vi, afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import React from 'react';
 
-// Cleanup after each test
 afterEach(() => {
-  cleanup()
-})
+  cleanup();
+});
 
-// CRITICAL: Patch window.matchMedia IMMEDIATELY before any other code runs
-// This must be the first thing that happens to catch framer-motion's initialization
 const originalMatchMedia = window.matchMedia;
 
-// Create a super-robust MediaQueryList
 const createBulletproofMql = (query = '') => {
   const mql = {
     matches: false,
     media: query,
     onchange: null,
     addListener: vi.fn().mockImplementation((callback) => {
-      // Immediately call the callback with no reduced motion
       if (typeof callback === 'function') {
         try {
           callback({ matches: false, media: query });
         } catch (e) {
-          // Silently ignore any callback errors
         }
       }
     }),
     removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
+    dispatchEvent: vi.fn()
   };
   
-  // Ensure prototype chain is correct
   try {
     if (typeof MediaQueryList !== 'undefined' && MediaQueryList.prototype) {
       Object.setPrototypeOf(mql, MediaQueryList.prototype);
     }
   } catch (e) {
-    // Ignore prototype errors
   }
   
   return mql;
 };
 
-// Override matchMedia globally and immediately
 window.matchMedia = vi.fn().mockImplementation(createBulletproofMql);
 
-// Suppress warnings and errors during tests
 const originalConsoleWarn = console.warn;
 const originalConsoleError = console.error;
 
@@ -79,9 +70,15 @@ console.error = (...args) => {
 
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}
-  observe() { return null; }
-  disconnect() { return null; }
-  unobserve() { return null; }
+  observe() {
+    return null; 
+  }
+  disconnect() {
+    return null; 
+  }
+  unobserve() {
+    return null; 
+  }
 };
 
 Object.defineProperty(window, 'ResizeObserver', {
@@ -89,13 +86,11 @@ Object.defineProperty(window, 'ResizeObserver', {
   value: vi.fn().mockImplementation(() => ({
     observe: vi.fn(),
     unobserve: vi.fn(),
-    disconnect: vi.fn(),
-  })),
+    disconnect: vi.fn()
+  }))
 });
 
-// matchMedia is already defined above, no need to redefine
 
-// Mock MediaQueryList constructor if needed
 global.MediaQueryList = global.MediaQueryList || class MediaQueryList {
   constructor() {
     this.matches = false;
@@ -109,37 +104,69 @@ global.MediaQueryList = global.MediaQueryList || class MediaQueryList {
   }
 };
 
-// Mock window.open for WhatsApp tests
 Object.defineProperty(window, 'open', {
   writable: true,
-  value: vi.fn(),
+  value: vi.fn()
 });
 
-// Mock for framer-motion's reduced motion detection
 Object.defineProperty(window, 'CSS', {
   writable: true,
   value: {
-    supports: vi.fn().mockReturnValue(false),
-  },
+    supports: vi.fn().mockReturnValue(false)
+  }
 });
 
-// Disable animations for more stable tests
 process.env.DISABLE_MOTION = 'true';
 
-// Removed problematic global.Error override that was breaking tests
+vi.mock('framer-motion', () => {
+  const mockComponent = (tag) => {
+    const Component = ({ children, ...props }) => {
+      const { variants, initial, animate, whileHover, whileTap, ...otherProps } = props;
+      return React.createElement(tag, otherProps, children);
+    };
+    Component.displayName = `Motion${tag.charAt(0).toUpperCase() + tag.slice(1)}`;
+    return Component;
+  };
 
-// Override the global error handler to catch and suppress framer-motion errors
+  return {
+    motion: {
+      div: mockComponent('div'),
+      button: mockComponent('button'),
+      span: mockComponent('span'),
+      a: mockComponent('a'),
+      img: mockComponent('img'),
+      h1: mockComponent('h1'),
+      h2: mockComponent('h2'),
+      h3: mockComponent('h3'),
+      p: mockComponent('p'),
+      section: mockComponent('section'),
+      article: mockComponent('article'),
+      aside: mockComponent('aside'),
+      nav: mockComponent('nav'),
+      header: mockComponent('header'),
+      footer: mockComponent('footer'),
+      main: mockComponent('main')
+    },
+    AnimatePresence: ({ children }) => children,
+    useInView: () => true,
+    useAnimation: () => ({
+      start: vi.fn(),
+      stop: vi.fn(),
+      set: vi.fn()
+    })
+  };
+});
+
+
 const originalOnerror = window.onerror;
 window.onerror = function(message, source, lineno, colno, error) {
   if (typeof message === 'string' && 
       (message.includes('addListener') || 
        message.includes('framer-motion') ||
        source?.includes('framer-motion'))) {
-    // Suppress framer-motion errors
-    return true; // Prevents the error from being logged
+    return true;
   }
   
-  // Let other errors through
   if (originalOnerror) {
     return originalOnerror(message, source, lineno, colno, error);
   }

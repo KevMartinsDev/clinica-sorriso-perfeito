@@ -1,4 +1,5 @@
-import { getGalleryImagePath } from '../utils/assetHelpers';
+import draMariaImg from '../assets/images/team/dra-maria.jpg';
+import drJoaoImg from '../assets/images/team/dr-joao.jpg';
 
 export const teamData = [
   {
@@ -6,7 +7,7 @@ export const teamData = [
     name: 'Dra. Maria Santos',
     specialty: 'Ortodontia e Implantodontia',
     education: 'USP, Especialização em Harmonização Orofacial',
-    image: getGalleryImagePath('Dra. Maria.jpg'),
+    image: draMariaImg,
     description: 'Especialista em transformar sorrisos com mais de 15 anos de experiência em tratamentos ortodônticos e implantológicos.'
   },
   {
@@ -14,7 +15,7 @@ export const teamData = [
     name: 'Dr. João Silva',
     specialty: 'Endodontia e Estética',
     education: 'UNIFESP, Pós-graduação em Estética Dental',
-    image: getGalleryImagePath('Dr. João.jpg'),
+    image: drJoaoImg,
     description: 'Dedicado aos tratamentos endodônticos e estéticos, sempre utilizando as mais modernas técnicas da odontologia.'
   }
 ];

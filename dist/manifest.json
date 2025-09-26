@@ -1,7 +1,7 @@
 {
-  "name": "Clínica Sorriso Perfeito",
+  "name": "Clínica Sorriso Perfeito - Blog Odontológico",
   "short_name": "Sorriso Perfeito",
-  "description": "Clínica odontológica especializada em tratamentos dentários modernos e eficazes",
+  "description": "Blog especializado em odontologia com artigos sobre saúde bucal, tratamentos e cuidados dentários por profissionais qualificados",
   "theme_color": "#2E8B57",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -62,37 +62,37 @@
   ],
   "shortcuts": [
     {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Acesse os artigos do blog",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/icons/shortcut-blog.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
       "name": "Agendar Consulta",
       "short_name": "Agendar",
-      "description": "Agende uma consulta rapidamente",
+      "description": "Agende sua consulta",
       "url": "/agendamento",
       "icons": [
         {
-          "src": "/icons/shortcut-agendamento.png",
+          "src": "/icons/shortcut-appointment.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Contato WhatsApp",
-      "short_name": "WhatsApp",
-      "description": "Entre em contato via WhatsApp",
-      "url": "https://wa.me/555591679300",
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato",
+      "url": "/contato",
       "icons": [
         {
-          "src": "/icons/shortcut-whatsapp.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Nossos Serviços",
-      "short_name": "Serviços",
-      "description": "Conheça nossos tratamentos",
-      "url": "/servicos",
-      "icons": [
-        {
-          "src": "/icons/shortcut-servicos.png",
+          "src": "/icons/shortcut-contact.png",
           "sizes": "96x96"
         }
       ]
@@ -118,5 +118,22 @@
   ],
   "edge_side_panel": {
     "preferred_width": 400
-  }
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+dental",
+      "url": "/agendamento?type=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/open-file",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".webp"]
+      }
+    }
+  ]
 }

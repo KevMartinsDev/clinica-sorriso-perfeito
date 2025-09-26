@@ -6,7 +6,6 @@ const useInfiniteScroll = (items, itemsPerPage = 6) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
-  // Reset when items change (filter change)
   useEffect(() => {
     setDisplayedItems(items.slice(0, itemsPerPage));
     setPage(1);
@@ -15,11 +14,12 @@ const useInfiniteScroll = (items, itemsPerPage = 6) => {
   }, [items, itemsPerPage]);
 
   const loadMore = useCallback(() => {
-    if (loading || !hasMore) return;
+    if (loading || !hasMore) {
+      return;
+    }
 
     setLoading(true);
     
-    // Simulate loading delay for better UX
     setTimeout(() => {
       const startIndex = page * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;

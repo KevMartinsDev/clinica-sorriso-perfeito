@@ -5,7 +5,9 @@ const useIntersectionObserverRef = (ref, options = {}) => {
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -14,7 +16,7 @@ const useIntersectionObserverRef = (ref, options = {}) => {
       {
         threshold: 0.1,
         rootMargin: '50px',
-        ...options,
+        ...options
       }
     );
 

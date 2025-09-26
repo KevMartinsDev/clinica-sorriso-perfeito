@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { formatDateTime, formatMoney, capitalizeWords } from '../utils/formatters';
-
-const WHATSAPP_NUMBER = '555591679300';
+import { CONTACT, WHATSAPP_MESSAGES } from '../config/constants';
 
 export const useWhatsApp = () => {
   const sendAppointment = useCallback((appointmentData) => {
@@ -21,7 +20,7 @@ export const useWhatsApp = () => {
     } = appointmentData;
 
     const professionalText = professional === 'no-preference' ? 'Sem preferência' : 
-                           professional === 'maria' ? 'Dra. Maria' : 'Dr. João';
+      professional === 'maria' ? 'Dra. Maria' : 'Dr. João';
     
     const insuranceText = insurance === 'none' ? 'Não possui' : insurance;
     const patientType = isReturningPatient ? 'Sim' : 'Não';
@@ -41,13 +40,13 @@ Ja e paciente: ${patientType}
 ${observations ? `Observacoes: ${observations}\n` : ''}
 Aguardo confirmacao!`;
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${CONTACT.WHATSAPP}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   }, []);
 
   const sendContact = useCallback((contactData) => {
     const { name, phone, email, subject, message } = contactData;
-    
+
     const whatsappMessage = `Olá! Recebi seu contato através do site.
 
 *Nome:* ${name}
@@ -56,18 +55,17 @@ Aguardo confirmacao!`;
 *Assunto:* ${subject}
 *Mensagem:* ${message}`;
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/${CONTACT.WHATSAPP}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
   }, []);
 
   const sendEmergency = useCallback(() => {
-    const message = 'EMERGÊNCIA - Preciso de atendimento urgente';
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${CONTACT.WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGES.EMERGENCY)}`;
     window.open(whatsappUrl, '_blank');
   }, []);
 
-  const sendGeneralInquiry = useCallback((message = 'Olá! Gostaria de agendar uma consulta.') => {
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const sendGeneralInquiry = useCallback((message = WHATSAPP_MESSAGES.DEFAULT) => {
+    const whatsappUrl = `https://wa.me/${CONTACT.WHATSAPP}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   }, []);
 
@@ -76,6 +74,6 @@ Aguardo confirmacao!`;
     sendContact,
     sendEmergency,
     sendGeneralInquiry,
-    whatsappNumber: WHATSAPP_NUMBER
+    whatsappNumber: CONTACT.WHATSAPP
   };
 };

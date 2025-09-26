@@ -69,11 +69,11 @@ Demonstrar proficiência em:
 
 ### **Paleta de Cores**
 ```css
---primary-color: #2E8B57     /* Verde médico */
+--primary-color: #2E8B57    
 --primary-color-light: #90EE90
 --primary-color-dark: #1e5f3f
---secondary-color: #87CEEB   /* Azul claro */
---accent-color: #FFD700      /* Dourado */
+--secondary-color: #87CEEB  
+--accent-color: #FFD700     
 --text-dark: #2c2c2c
 --text-gray: #666666
 --background: #f8f9fa
@@ -96,55 +96,116 @@ Demonstrar proficiência em:
 
 ```
 src/
-├── 📁 components/          # Componentes React organizados por feature
-│   ├── about/             # Componentes da página Sobre
-│   │   └── TeamSection.jsx
-│   ├── blog/              # Sistema de blog/artigos
-│   │   ├── BlogCard.jsx   # Card individual do post
-│   │   ├── BlogList.jsx   # Lista de posts
-│   │   ├── BlogPost.jsx   # Visualização completa do post
-│   │   ├── SearchBar.jsx  # Busca no blog
-│   │   └── __tests__/     # Testes dos componentes do blog
-│   ├── common/            # Componentes base reutilizáveis
-│   │   ├── Button.jsx     # Sistema de botões
-│   │   ├── Card.jsx       # Componente de card base
-│   │   ├── CookieConsent.jsx # Consentimento de cookies
-│   │   ├── ErrorBoundary.jsx # Tratamento de erros
-│   │   ├── Footer.jsx     # Rodapé global
-│   │   ├── Header.jsx     # Cabeçalho com navegação
-│   │   ├── Input.jsx      # Campo de entrada base
-│   │   ├── Layout.jsx     # Layout wrapper
-│   │   ├── Loading.jsx    # Estado de carregamento
-│   │   ├── LoadingSpinner.jsx # Spinner de carregamento
-│   │   ├── Modal.jsx      # Sistema de modais
-│   │   ├── NotFound.jsx   # Página 404
-│   │   ├── ScrollToTop.jsx # Botão voltar ao topo
-│   │   ├── Select.jsx     # Campo de seleção
-│   │   ├── SEO.jsx        # Otimização SEO
-│   │   ├── Textarea.jsx   # Campo de texto multilinha
-│   │   ├── WhatsAppFloat.jsx # Botão flutuante WhatsApp
-│   │   └── __tests__/     # Testes dos componentes comuns
-│   ├── forms/             # Sistema de formulários
-│   │   ├── AppointmentForm.jsx # Formulário de agendamento
-│   │   ├── ContactForm.jsx # Formulário de contato
-│   │   ├── DatePicker.jsx  # Seletor de data
-│   │   ├── ServiceSelector.jsx # Seletor de serviços
-│   │   ├── TimeSlots.jsx   # Seleção de horários
-│   │   └── __tests__/      # Testes dos formulários
-│   ├── gallery/           # Sistema de galeria
-│   │   ├── FilterButtons.jsx # Filtros da galeria
-│   │   ├── ImageCard.jsx   # Card de imagem
-│   │   ├── ImageGallery.jsx # Grid da galeria
-│   │   ├── LazyImage.jsx   # Carregamento lazy de imagens
-│   │   ├── Lightbox.jsx    # Visualização ampliada
-│   │   ├── LoadingSpinner.jsx # Spinner específico da galeria
-│   │   ├── OptimizedImage.jsx # Componente de imagem otimizada
-│   │   └── __tests__/      # Testes da galeria
-│   └── home/              # Componentes específicos da homepage
-│       ├── ContactInfo.jsx # Informações de contato
-│       ├── Hero.jsx        # Seção principal/banner
-│       ├── ServicesPreview.jsx # Preview dos serviços
-│       └── Testimonials.jsx # Depoimentos de clientes
+├── 📁 components/          # Componentes React organizados por categoria
+│   ├── 📁 features/       # Componentes específicos por funcionalidade
+│   │   ├── 📁 blog/       # Sistema de blog/artigos
+│   │   │   ├── BlogCard/
+│   │   │   │   └── index.jsx
+│   │   │   ├── BlogList/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── BlogList.styles.js
+│   │   │   ├── BlogPost/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── BlogPost.styles.js
+│   │   │   └── SearchBar/
+│   │   │       └── index.jsx
+│   │   ├── 📁 gallery/    # Sistema de galeria
+│   │   │   ├── FilterButtons/
+│   │   │   │   └── index.jsx
+│   │   │   ├── ImageGallery/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── ImageGallery.styles.js
+│   │   │   ├── LazyImage/
+│   │   │   │   └── index.jsx
+│   │   │   └── Lightbox/
+│   │   │       └── index.jsx
+│   │   ├── 📁 home/       # Componentes específicos da homepage
+│   │   │   ├── ContactInfo/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── ContactInfo.styles.js
+│   │   │   ├── Hero/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── Hero.styles.js
+│   │   │   └── ServicesPreview/
+│   │   │       ├── index.jsx
+│   │   │       └── ServicesPreview.styles.js
+│   │   └── 📁 testimonials/ # Depoimentos e equipe
+│   │       ├── TeamSection/
+│   │       │   ├── index.jsx
+│   │       │   └── TeamSection.styles.js
+│   │       └── Testimonials/
+│   │           ├── index.jsx
+│   │           └── Testimonials.styles.js
+│   ├── 📁 forms/          # Sistema de formulários
+│   │   ├── AppointmentForm/
+│   │   │   ├── index.jsx
+│   │   │   ├── AppointmentForm.styles.js
+│   │   │   ├── DatePicker.jsx
+│   │   │   ├── ServiceSelector.jsx
+│   │   │   └── TimeSlots.jsx
+│   │   ├── ContactForm/
+│   │   │   ├── index.jsx
+│   │   │   └── ContactForm.styles.js
+│   │   └── FormField/
+│   │       ├── index.jsx
+│   │       └── FormField.styles.js
+│   ├── 📁 layout/         # Componentes de layout/estrutura
+│   │   ├── CookieConsent.jsx
+│   │   ├── ErrorBoundary.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── Layout.jsx
+│   │   ├── NotFound.jsx
+│   │   └── ScrollToTop.jsx
+│   └── 📁 ui/             # Componentes base reutilizáveis
+│       ├── Button/
+│       │   ├── index.jsx
+│       │   ├── Button.styles.js
+│       │   └── __tests__/
+│       │       └── Button.test.jsx
+│       ├── Card/
+│       │   ├── index.jsx
+│       │   └── Card.styles.js
+│       ├── ErrorBoundary/
+│       │   ├── index.jsx
+│       │   └── ErrorBoundary.styles.js
+│       ├── Input/
+│       │   ├── index.jsx
+│       │   └── Input.styles.js
+│       ├── LazyImage/
+│       │   ├── index.jsx
+│       │   └── LazyImage.styles.js
+│       ├── LazyLoad/
+│       │   └── index.jsx
+│       ├── LazyLoadWrapper/
+│       │   ├── index.jsx
+│       │   └── LazyLoadWrapper.styles.js
+│       ├── LoadingSpinner/
+│       │   ├── index.jsx
+│       │   └── LoadingSpinner.styles.js
+│       ├── Modal/
+│       │   ├── index.jsx
+│       │   └── Modal.styles.js
+│       ├── OptimizedImage/
+│       │   ├── index.jsx
+│       │   └── OptimizedImage.styles.js
+│       ├── PerformanceMonitor/
+│       │   └── index.jsx
+│       ├── ProgressBar/
+│       │   ├── index.jsx
+│       │   └── ProgressBar.styles.js
+│       ├── Select/
+│       │   ├── index.jsx
+│       │   └── Select.styles.js
+│       ├── SuspenseWrapper/
+│       │   ├── index.jsx
+│       │   └── SuspenseWrapper.styles.js
+│       ├── Textarea/
+│       │   ├── index.jsx
+│       │   └── Textarea.styles.js
+│       └── WhatsAppFloat/
+│           ├── index.jsx
+│           └── WhatsAppFloat.styles.js
 ├── 📁 data/               # Dados estáticos da aplicação
 │   ├── blog-posts.js      # Posts do blog
 │   ├── gallery.js         # Dados da galeria de imagens
@@ -159,17 +220,37 @@ src/
 │   ├── useIntersectionObserverRef.js # Observer com ref
 │   └── useWhatsApp.js     # Integração com WhatsApp
 ├── 📁 pages/              # Páginas da aplicação (React Router)
-│   ├── About.jsx          # Página sobre a clínica
-│   ├── Agendamento.jsx    # Página de agendamento (PT)
-│   ├── Appointment.jsx    # Página de agendamento (EN)
-│   ├── Blog.jsx           # Listagem do blog
-│   ├── BlogPage.jsx       # Página alternativa do blog
-│   ├── BlogPostPage.jsx   # Página individual do post
-│   ├── Contact.jsx        # Página de contato
-│   ├── Galeria.jsx        # Galeria (PT)
-│   ├── Gallery.jsx        # Galeria (EN)
-│   ├── Home.jsx           # Página inicial
-│   └── Services.jsx       # Página de serviços
+│   ├── About/
+│   │   ├── index.jsx      # Página sobre a clínica
+│   │   ├── About.styles.js
+│   │   └── __tests__/
+│   │       └── About.test.jsx
+│   ├── Agendamento/
+│   │   ├── index.jsx      # Página de agendamento (PT)
+│   │   └── Agendamento.styles.js
+│   ├── Blog/
+│   │   ├── index.jsx      # Listagem do blog
+│   │   └── Blog.styles.js
+│   ├── BlogPage/
+│   │   ├── index.jsx      # Página alternativa do blog
+│   │   └── BlogPage.styles.js
+│   ├── BlogPostPage/
+│   │   ├── index.jsx      # Página individual do post
+│   │   └── BlogPostPage.styles.js
+│   ├── Contact/
+│   │   ├── index.jsx      # Página de contato
+│   │   └── Contact.styles.js
+│   ├── Galeria/
+│   │   ├── index.jsx      # Galeria (PT)
+│   │   └── Galeria.styles.js
+│   ├── Home/
+│   │   ├── index.jsx      # Página inicial
+│   │   └── Home.styles.js
+│   └── Services/
+│       ├── index.jsx      # Página de serviços
+│       ├── Services.styles.js
+│       └── __tests__/
+│           └── Services.test.jsx
 ├── 📁 styles/             # Estilos globais
 │   └── GlobalStyles.js    # Styled-components globais + CSS reset
 ├── 📁 test/               # Configuração de testes

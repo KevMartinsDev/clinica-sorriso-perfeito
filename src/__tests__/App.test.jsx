@@ -35,23 +35,23 @@ vi.mock('../pages/Contact', () => ({
   default: () => <div data-testid="contact-page">Contact Page</div>
 }));
 
-vi.mock('../components/common/NotFound', () => ({
+vi.mock('../components/layout/NotFound', () => ({
   default: () => <div data-testid="not-found-page">404 Not Found</div>
 }));
 
 
-vi.mock('../components/common/ScrollToTop', () => ({
+vi.mock('../components/layout/ScrollToTop', () => ({
   default: () => null
 }));
 
 
-vi.mock('../components/common/CookieConsent', () => ({
+vi.mock('../components/layout/CookieConsent', () => ({
   default: () => <div data-testid="cookie-consent">Cookie Consent</div>
 }));
 
 
-vi.mock('../components/common/LoadingSpinner', () => ({
-  default: () => <div data-testid="loading-spinner">Loading...</div>
+vi.mock('../components/layout/ErrorBoundary', () => ({
+  default: ({ children }) => <div data-testid="error-boundary">{children}</div>
 }));
 
 describe('App', () => {
@@ -87,18 +87,13 @@ describe('App', () => {
     expect(document.body).toBeInTheDocument();
   });
 
-  // Skipped because CSS is disabled in vitest config
-  // it('includes global styles', () => {
-  //   render(<App />);
-  //   
-  //   const styleElements = document.querySelectorAll('style');
-  //   expect(styleElements.length).toBeGreaterThan(0);
-  // });
 
   it('renders 404 page for unknown routes', async () => {
-    window.history.pushState({}, 'Unknown', '/unknown-route');
     render(<App />);
-    
+
+    window.location.hash = '#/unknown-route';
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+
     const notFoundPage = await screen.findByTestId('not-found-page');
     expect(notFoundPage).toBeInTheDocument();
   });

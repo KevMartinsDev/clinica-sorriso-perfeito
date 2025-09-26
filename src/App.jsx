@@ -1,10 +1,10 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { GlobalStyles } from './styles/GlobalStyles';
-import ScrollToTop from './components/common/ScrollToTop';
-import ErrorBoundary from './components/common/ErrorBoundary';
-import NotFound from './components/common/NotFound';
-import CookieConsent from './components/common/CookieConsent';
+import ScrollToTop from './components/layout/ScrollToTop';
+import ErrorBoundary from './components/layout/ErrorBoundary';
+import NotFound from './components/layout/NotFound';
+import CookieConsent from './components/layout/CookieConsent';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -20,7 +20,12 @@ function App() {
     <ErrorBoundary>
       <HelmetProvider>
         <GlobalStyles />
-        <Router>
+        <Router
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true
+          }}
+        >
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />

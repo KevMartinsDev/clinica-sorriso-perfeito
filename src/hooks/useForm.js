@@ -80,7 +80,9 @@ export const useForm = (initialValues = {}, validationRules = {}) => {
 
   const showErrorMessage = useCallback((message) => {
     const existingAlert = document.querySelector('.form-error-alert');
-    if (existingAlert) existingAlert.remove();
+    if (existingAlert) {
+      existingAlert.remove();
+    }
     
     const alertDiv = document.createElement('div');
     alertDiv.className = 'form-error-alert';
@@ -120,7 +122,9 @@ export const useForm = (initialValues = {}, validationRules = {}) => {
   }, []);
 
   const handleSubmit = useCallback((onSubmit) => async (e) => {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     
     const allTouched = Object.keys(values).reduce((acc, key) => {
       acc[key] = true;
